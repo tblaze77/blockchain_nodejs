@@ -31,5 +31,11 @@ Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash) 
     return newBlock;
 }
 
+//getting the last block method
+Blockchain.prototype.getLastBlock= function () {
+    //indexing the last element of the array
+    return this.chain[this.chain.length-1];
+}
+
 
 module.exports = Blockchain;
