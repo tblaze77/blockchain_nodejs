@@ -1,18 +1,31 @@
 const Blockchain = require("./blockchain");
 
+
 const dukatoni = new Blockchain();
 
-dukatoni.createNewBlock(420, "ASDFGHJKLY", "1q2w3e4r5t");
-dukatoni.createNewTransaction(100, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
-dukatoni.createNewBlock(555, "QWERTZUIOP", "q1w2e3r4t5");
-dukatoni.createNewTransaction(554, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
-dukatoni.createNewTransaction(556, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
-dukatoni.createNewTransaction(557, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
-//adding new element of the block
-dukatoni.createNewBlock(555, "QWERTZUIOP", "q1w2e3r4t5");
+const previousBlockHash = '87765DA6CCF0668238C2D27CR5692G11'
 
+const currentBlockData = [
+    {
+    amount: 10,
+    sender: 'B4CEE9C0E5CD571',
+    recipient: '3A3F6E462D48E9',
+    },
+    {
+        amount: 10,
+        sender: 'ASDFGHRTGLCKEQW',
+        recipient: '3AMF6G46234849',
+        },
+        {
+            amount: 20,
+            sender: '4CEE9C0E5CJERGE',
+            recipient: '2A3F6E462D48E9',
+            }
+    ]
 
-//adding pending transactions to newly created block
-console.log(dukatoni.chain[2]);
+const nonce = 200;
+
+console.log(dukatoni.hashBlock(previousBlockHash, currentBlockData, nonce));
+
 
 
