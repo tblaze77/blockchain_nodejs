@@ -4,12 +4,15 @@ const dukatoni = new Blockchain();
 
 dukatoni.createNewBlock(420, "ASDFGHJKLY", "1q2w3e4r5t");
 dukatoni.createNewTransaction(100, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
-// dukatoni.createNewBlock(420, "QWERTZUIOP", "0o9i8u7z6t");
-// dukatoni.createNewBlock(420, "YXCVBNMASD", "1234567891");
+dukatoni.createNewBlock(555, "QWERTZUIOP", "q1w2e3r4t5");
+dukatoni.createNewTransaction(554, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
+dukatoni.createNewTransaction(556, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
+dukatoni.createNewTransaction(557, "ALEXHT845SJ5TKCJ2", "JENN5BG5DF6HT8NG9");
+//adding new element of the block
+dukatoni.createNewBlock(555, "QWERTZUIOP", "q1w2e3r4t5");
 
-//testing createNewBlock method
-console.log(dukatoni);
 
-//testing getLastBlock method
-// console.log("this is the last element of the blockchain");
-// console.log(dukatoni.getLastBlock());
+//adding pending transactions to newly created block
+console.log(dukatoni.chain[2]);
+
+
