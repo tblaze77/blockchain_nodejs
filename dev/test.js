@@ -23,9 +23,8 @@ const currentBlockData = [
             }
     ]
 
-const nonce = 200;
 
-console.log(dukatoni.hashBlock(previousBlockHash, currentBlockData, nonce));
+console.log(dukatoni.proofOfWork(previousBlockHash, currentBlockData));
 
 
 
