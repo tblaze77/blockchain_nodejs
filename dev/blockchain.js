@@ -1,3 +1,6 @@
+/*importing sha256 module */
+const sha256 = require('sha256');
+
 /* main blockchain code */
 
 /*main object of the blockchain */
@@ -59,5 +62,14 @@ Blockchain.prototype.createNewTransaction = function (
   this.pendingTransactions.push(newTransaction);
   return this.getLastBlock()["index"] + 1;
 };
+
+//hashing data from current block
+
+Blockchain.prototype.hashBlock = function (previousBlockHash,currentBlockData,nonce) {
+  //previousBlockHash is already a string, nonce is a number so it needs conversion and current blockdata is a JSON object 
+  const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+  const hash = sha256(dataAsString);
+  return hash;
+}
 
 module.exports = Blockchain;
