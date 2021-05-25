@@ -4,11 +4,16 @@
   "description": "implementing blockchain features",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon dev/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "sha256": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
