@@ -4,7 +4,7 @@
   "description": "implementing blockchain features",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dev/api.js",
+    "start": "nodemon dev/networkNode.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
