@@ -3,4 +3,4 @@ const dukatoni = new Blockchain();
 
 console.log(dukatoni);
 console.log("test");
-console.log("test3");
+console.log("test2");
