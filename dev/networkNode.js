@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 const bodyParser = require ('body-parser');
+const Blockchain = require("./blockchain");
+
+const dukatoni = new Blockchain();
 
 
 app.use(express.json());
@@ -9,21 +12,21 @@ app.use(express.urlencoded({
 }));
 
 app.get("/blockchain", (req, res) => {
-  res.send("blockchain endpoint");
+  res.send(dukatoni);
 });
 
 app.get("/transaction", (req, res) => {
   res.send("transaction endpoint");
 });
 
+app.post("/transaction", function(req, res) {
+  const blockIndex = dukatoni.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient)
+  res.json({note: `transaction wil be added in block ${blockIndex}.`})
+});
+
 app.get("/mine", (req, res) => {
   res.send("mine endpoint");
 });
-
-app.post("/transaction", (req,res) => {
-  console.log(req.body);
-  res.send(`the amount of the transaction is ${req.body.amount} dukatoni's`);
-})
 
 app.listen(8000, (err) => {
   if(err) console.log('error in starting server')
