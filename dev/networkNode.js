@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 const bodyParser = require ('body-parser');
 const Blockchain = require("./blockchain");
+const uuid = require ('uuid');
 
 const dukatoni = new Blockchain();
 
@@ -25,7 +26,22 @@ app.post("/transaction", function(req, res) {
 });
 
 app.get("/mine", (req, res) => {
-  res.send("mine endpoint");
+  const lastBlock = dukatoni.getLastBlock();
+  const previousBlockHash = lastBlock['hash'];
+  const currentBlockData = {
+    transactions: dukatoni.pendingTransactions,
+    index: lastBlock['index'] +1
+  };
+  const nonce = dukatoni.proofOfWork(previousBlockHash, currentBlockData)
+  const blockHash = dukatoni.hashBlock(previousBlockHash, currentBlockData, nonce);
+  const newBlock = dukatoni.createNewBlock(nonce, previousBlockHash, blockHash);
+
+  res.json({
+    note: 'new block has been mined successfully',
+    block: newBlock
+  });
+  const nodeAddress = uuid.v5().split('-').join('');
+  dukatoni.createNewTransaction(13, "00", nodeAddress)
 });
 
 app.listen(8000, (err) => {
