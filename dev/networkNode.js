@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+const port = process.argv[2]; 
 const bodyParser = require ('body-parser');
 const Blockchain = require("./blockchain");
 const uuid = require ('uuid');
@@ -44,7 +45,7 @@ app.get("/mine", (req, res) => {
   dukatoni.createNewTransaction(13, "00", nodeAddress)
 });
 
-app.listen(8000, (err) => {
+app.listen(port, (err) => {
   if(err) console.log('error in starting server')
-  else console.log('server is listening on port 8000');
+  else console.log(`server is listening on port ${port}...`);
 });
